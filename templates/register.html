@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Kayıt Olun!</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<div class="container" style="min-height:100% width:80%">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+          {{message}}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+  {% block body %}{% endblock %}
+  </div>
+  <form class="form-signin_up" method="post" action="{{ '/signup' }}">
+    <h2 class="form-signin_up-heading">Yeni Hesap Oluştur.</h2>
+    <br></br>
+    <label>Username: </label>
+    <input type="text" class="form-control" name="username" required="" autofocus="" />
+    <label>Password: </label>
+    <input type="password" class="form-control" name="password" required="" autofocus="" />
+    <label>Salutation </label>
+    <input type="text" class="form-control" name="salutation" required="" autofocus="" />
+    <label>Name: </label>
+    <input type="text" class="form-control" name="name" required=""/>
+      <label>Lastname: </label>
+    <input type="text" class="form-control" name="lastname" required=""/>
+    <label>Affiliation: </label>
+    <input type="text" class="form-control" name="affiliation" required=""/>
+    <label>PrimaryEmail: </label>
+    <input type="email" class="form-control" name="primaryEmail" required="" autofocus="" />
+    <label>Secondary Email: </label>
+    <input type="email" class="form-control" name="secondaryEmail" autofocus="" />
+    <label>Phone: </label>
+    <input type="tel" class="form-control" name="phone" required="" autofocus="" />
+    <label>Fax: </label>
+    <input type="tel" class="form-control" name="fax" required="" autofocus="" />
+
+      <label>Url: </label>
+    <input type="tel" class="form-control" name="url" required="" autofocus="" />
+
+    <label>Address: </label>
+    <textarea class="form-control" id="adres" name="address" rows="3"></textarea>
+    <label>City: </label>
+    <input type="text" class="form-control" name="city" required=""/>
+    <label>Country: </label>
+    <input type="text" class="form-control" name="country" required=""/>
+    <br></br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Kayıt Ol</button>
+    <p></p>
+    <a href="/">Giriş Yapın!</a>
+  </form>
+</div>

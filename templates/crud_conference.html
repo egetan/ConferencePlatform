@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+   <body>
+
+   <h5> <a href="{{ url_for('create_conference_page') }}">Create New Conference </a> </h5>
+
+   <h5> <a href="{{ url_for('show_submissions', confid=Conference.ConfID) }}">My Submissions </a> </h5>
+
+   <h5> <a href="{{ url_for('update_userinfo_page') }}">Update UserInfo </a> </h5>
+      <table>
+         <thead>
+            <tr>
+               <th>ConfID </th>
+               <th>CreationDateTime</th>
+               <th>Name</th>
+               <th>ShortName</th>
+               <th>Year</th>
+               <th>StartDate</th>
+               <th>EndDate</th>
+               <th>SubmissionDeadLine</th>
+               <th>CreatorUser</th>
+               <th>Website</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for cnf in Conference %}
+               <tr>
+                  <td>{{ cnf.ConfID }}</td>
+                  <td>{{ cnf.CreationDateTime }}</td>
+                  <td>{{ cnf.Name }}</td>
+                  <td>{{ cnf.ShortName }}</td>
+                  <td>{{ cnf.Year }}</td>
+                  <td>{{ cnf.StartDate }}</td>
+                  <td>{{ cnf.EndDate }}</td>
+                  <td>{{ cnf.SubmissionDeadLine }}</td>
+                  <td>{{ cnf.CreatorUser }}</td>
+                  <td>{{ cnf.Website }}</td>
+                  <td> <a href = "{{ url_for('update_conference_page', confid=cnf.ConfID,
+                                                                   creationdatetime=cnf.CreationDateTime,
+                                                                   name=cnf.Name,
+                                                                   shortname=cnf.ShortName,
+                                                                   year=cnf.Year,
+                                                                   startdate=cnf.StartDate,
+                                                                   enddate=cnf.EndDate,
+                                                                   submissiondeadline=cnf.SubmissionDeadLine,
+                                                                   creatoruser=cnf.CreatorUser,
+                                                                   website=cnf.Website ) }}">Update  </a> </td>
+
+                  <td> <a href = "{{ url_for('new_submission_request', confid=cnf.ConfID,
+                                                                   creationdatetime=cnf.CreationDateTime,
+                                                                   name=cnf.Name,
+                                                                   shortname=cnf.ShortName,
+                                                                   year=cnf.Year,
+                                                                   startdate=cnf.StartDate,
+                                                                   enddate=cnf.EndDate,
+                                                                   submissiondeadline=cnf.SubmissionDeadLine,
+                                                                   creatoruser=cnf.CreatorUser,
+                                                                   website=cnf.Website ) }}">Submit Article  </a> </td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+   </body>
+</html>

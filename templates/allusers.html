@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<table>
+         <thead>
+            <tr>
+               <th>AuthenticationID </th>
+               <th>Salulation</th>
+               <th>Name</th>
+               <th>LastName</th>
+               <th>Affiliation</th>
+               <th>PrimaryEmail</th>
+               <th>SecondaryEmail</th>
+               <th>Password</th>
+               <th>Phone</th>
+               <th>Fax</th>
+               <th>Url</th>
+               <th>Address</th>
+               <th>City</th>
+               <th>Country</th>
+               <th>CreationDate</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for usr in UserInfo %}
+               <tr>
+                   <td>{{ usr.AuthenticationID }}</td>
+                   <td>{{ usr.Salulation }}</td>
+                   <td>{{ usr.Name }}</td>
+                   <td>{{ usr.LastName }}</td>
+                   <td>{{ usr.Affiliation }}</td>
+                   <td>{{ usr.PrimaryEmail }}</td>
+                   <td>{{ usr.SecondaryEmail }}</td>
+                   <td>{{ usr.Password }}</td>
+                   <td>{{ usr.Phone }}</td>
+                   <td>{{ usr.Fax }}</td>
+                   <td>{{ usr.Url }}</td>
+                   <td>{{ usr.Address }}</td>
+                   <td>{{ usr.City }}</td>
+                   <td>{{ usr.Country }}</td>
+                   <td>{{ usr.RecordCreationDate }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+</body>
+</html>

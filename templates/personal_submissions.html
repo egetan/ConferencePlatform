@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+   <body>
+
+       <h5> <a href="{{ url_for('crud_conference_page') }}">Main Menu </a> </h5>
+
+
+      <table>
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Abstract</th>
+               <th>Keywords</th>
+               <th>Type</th>
+               <th>SubmissionDateTime</th>
+               <th>Active</th>
+               <th>File</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for submission in Submission %}
+               <tr>
+                  <td>{{ submission.Title }}</td>
+                  <td>{{ submission.Abstract }}</td>
+                  <td>{{ submission.Keywords }}</td>
+                  <td>{{ submission.Type }}</td>
+                  <td>{{ submission.SubmissionDateTime }}</td>
+                  <td>{{ submission.Active }}</td>
+                  <td>{{ submission.PdfPath }}</td>
+
+                  <td> <a href = "{{ url_for('update_submission_request', submissionid=submission.SubmissionID ) }}">Update  </a> </td>
+
+                  <td> <a href = "{{ url_for('delete_submission', submissionid=submission.SubmissionID  ) }}">Delete  </a> </td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+   </body>
+</html>

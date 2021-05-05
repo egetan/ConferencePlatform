@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+   <body>
+
+
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "{{ url_for('update_submission_submit', submissionid=Submission['SubmissionID']) }}" method = "post">
+
+         <label for = "title">Title</label><br>
+         <input type = "text" name = "title" placeholder = "title"  value="{{ Submission.__item__('Title') }}" /><br>
+
+          <label for = "abstract">Abstract</label><br>
+         <input type = "text" name = "abstract" placeholder = "abstract" value="{{ Submission['Abstract'] }}"  /><br>
+
+          <label for = "keyword">Keyword</label><br>
+         <input type = "text" name = "keyword" placeholder = "keyword"  value="{{ Submission['Keyword'] }}" /><br>
+
+          <label for = "type">Type</label><br>
+         <input type = "text" name = "type" placeholder = "type"  value="{{ Submission['Type'] }}" /><br>
+
+          <label for = "submissiondatetime">SubmissionDateTime</label><br>
+         <input type = "datetime" name = "submissiondatetime"  value="{{ Submission['SubmissionDateTime'] }}"  /><br>
+
+          <label for = "active">Active</label><br>
+         <input type = "text" name = "active"  value="{{ Submission['Active'] }}"  /><br>
+
+          <label for = "pdf">File</label><br>
+          <input type="file" name="pdf" value="{{ Submission['PdfPath'] }}">
+
+         <input type = "submit" value = "Update" />
+      </form>
+
+   </body>
+</html>
